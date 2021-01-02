@@ -137,6 +137,11 @@ impl <T> HashableRc<T> {
         HashableRc {value}
     }
 
+    /// Returns a reference of the wrapped `Rc<T>`.
+    pub fn get(&self) -> &Rc<T> {
+        &self.value
+    }
+
     /// Returns a clone of the wrapped `Rc<T>` without consuming `self`.
     pub fn get_cloned(&self) -> Rc<T> {
         self.value.clone()
