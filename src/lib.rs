@@ -124,7 +124,7 @@ fn hash_rc<T, H: Hasher>(rc: Rc<T>, state: &mut H) {
 /// assert_eq!(HashableRc::new(rc1.clone()),
 ///            HashableRc::new(rc1.clone()));
 /// ```
-#[derive(Debug, Eq)]
+#[derive(Debug)]
 pub struct HashableRc<T> {
     value: Rc<T>,
 }
@@ -166,6 +166,8 @@ impl <T> PartialEq for HashableRc<T> {
         Rc::ptr_eq(&self.value, &other.value)
     }
 }
+
+impl <T> Eq for HashableRc<T> {}
 
 /// A hashable wrapper around the 
 /// [`Weak<T>`](https://doc.rust-lang.org/std/rc/struct.Weak.html)
